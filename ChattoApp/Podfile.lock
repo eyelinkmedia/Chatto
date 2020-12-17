@@ -14,8 +14,8 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  Chatto: 970c3546b01acdca60a7ba6de13cc73f62341fa7
-  ChattoAdditions: 914d976ef563161fcf632c69fd3b5cc1e8269fca
+  Chatto: aef1d09fed8d04a4e877d1a9f29270e3a3f591a4
+  ChattoAdditions: 2ea28363d32f6271b69df3933e6d7d8e9aaacac3
 
 PODFILE CHECKSUM: 7e673449d94d383ef7c7669fdd0f282d4d0e7059
 
