@@ -23,6 +23,12 @@
 
 Check the [wiki!](https://github.com/badoo/Chatto/wiki)
 
+## How to contribute
+
+If you **just have a question**, please reach us in [our gitter room](https://gitter.im/chatto-framework/community)
+
+If you'd like to file a bug report, suggest changes or submit a pull request, please [check our contribution guide](.github/CONTRIBUTING.md)
+
 ## How to install
 ### CocoaPods
 
@@ -31,8 +37,8 @@ Check the [wiki!](https://github.com/badoo/Chatto/wiki)
 2. Include the following in your `Podfile`:
   ```
   # Swift 5
-  pod 'Chatto', '= 3.6.0'
-  pod 'ChattoAdditions', '= 3.6.0' # if you want to use the cells or the input component
+  pod 'Chatto', '= 4.0.0'
+  pod 'ChattoAdditions', '= 4.0.0' # if you want to use the cells or the input component
   ```
   ```
   # Swift 4.2
@@ -82,8 +88,5 @@ github "badoo/Chatto" "swift-2"
 ## License
 Source code is distributed under MIT license.
 
-## Android
-Check our colleagues' project [Chateau]( https://github.com/badoo/Chateau)!
-
 ## Blog
-Read more on our [tech blog](http://techblog.badoo.com/) or explore our other [open source projects](https://github.com/badoo)
+Read more on our [tech blog](https://medium.com/bumble-tech) or explore our other [open source projects](https://github.com/badoo)
