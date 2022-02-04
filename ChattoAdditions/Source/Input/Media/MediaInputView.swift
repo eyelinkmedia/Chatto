@@ -110,12 +110,15 @@ public final class MediaInputView: UIView, MediaInputViewProtocol {
 
     var appearance: MediaInputViewAppearance?
 
+    private let liveCameraSettings: LiveCameraSettings?
     private let mediaTypes: [InputMediaType]
 
     public init(presentingControllerProvider: @escaping () -> UIViewController?,
                 appearance: MediaInputViewAppearance,
+                liveCameraSettings: LiveCameraSettings?,
                 mediaTypes: [InputMediaType]) {
         self.presentingControllerProvider = presentingControllerProvider
+        self.liveCameraSettings = liveCameraSettings
         self.mediaTypes = mediaTypes
         super.init(frame: CGRect.zero)
         self.appearance = appearance
@@ -204,7 +207,10 @@ public final class MediaInputView: UIView, MediaInputViewProtocol {
     fileprivate lazy var cameraPicker: MediaInputCameraPicker = self.makeCameraPicker()
 
     fileprivate lazy var liveCameraPresenter: LiveCameraCellPresenter = {
-        return LiveCameraCellPresenter(cellAppearance: self.appearance?.liveCameraCellAppearence ?? LiveCameraCellAppearance.createDefaultAppearance())
+        return LiveCameraCellPresenter(
+            cameraSettings: self.liveCameraSettings ?? LiveCameraSettings.makeDefaultSettings(),
+            cellAppearance: self.appearance?.liveCameraCellAppearence ?? LiveCameraCellAppearance.createDefaultAppearance()
+        )
     }()
 
     private func makeCameraPicker() -> MediaInputCameraPicker {
