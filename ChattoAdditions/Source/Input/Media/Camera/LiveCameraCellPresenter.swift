@@ -26,14 +26,20 @@ import UIKit
 import Photos
 
 public struct LiveCameraSettings {
+    public let allowCameraLivePreview: () -> Bool
     public let cameraPosition: AVCaptureDevice.Position
 
-    public init(cameraPosition: AVCaptureDevice.Position) {
+    public init(allowCameraLivePreview: @escaping () -> Bool,
+                cameraPosition: AVCaptureDevice.Position) {
+        self.allowCameraLivePreview = allowCameraLivePreview
         self.cameraPosition = cameraPosition
     }
 
     public static func makeDefaultSettings() -> LiveCameraSettings {
-        return LiveCameraSettings(cameraPosition: .unspecified)
+        return LiveCameraSettings(
+            allowCameraLivePreview: { true },
+            cameraPosition: .unspecified
+        )
     }
 }
 
@@ -191,6 +197,8 @@ public final class LiveCameraCellPresenter {
     }
 
     private var isCaptureAvailable: Bool {
+        guard self.cameraSettings.allowCameraLivePreview() else { return false }
+
         switch self.cameraAuthorizationStatus {
         case .notDetermined, .restricted, .denied:
             return false

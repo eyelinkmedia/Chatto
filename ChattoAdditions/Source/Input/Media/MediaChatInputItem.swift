@@ -67,6 +67,7 @@ open class MediaChatInputItem: ChatInputItemProtocol {
     lazy var mediaInputView: MediaInputViewProtocol = {
         let photosInputView = MediaInputView(presentingControllerProvider: { [weak presentingController] in presentingController },
                                              appearance: self.inputViewAppearance,
+                                             liveCameraSettings: nil,
                                              mediaTypes: [.image])
         photosInputView.delegate = self
         return photosInputView
@@ -123,5 +124,9 @@ extension MediaChatInputItem: MediaInputViewDelegate {
 
     public func inputViewDidRequestPhotoLibraryPermission(_ inputView: MediaInputViewProtocol) {
         self.photosPermissionHandler?()
+    }
+
+    public func inputViewCanPresentCameraDueToUserInteraction(_ inputView: MediaInputViewProtocol) -> Bool {
+        return true
     }
 }
