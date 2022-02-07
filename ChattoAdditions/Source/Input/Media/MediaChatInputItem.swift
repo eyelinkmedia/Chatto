@@ -126,7 +126,7 @@ extension MediaChatInputItem: MediaInputViewDelegate {
         self.photosPermissionHandler?()
     }
 
-    public func inputViewCanPresentCameraDueToUserInteraction() -> Bool {
+    public func inputViewCanPresentCameraDueToUserInteraction(_ inputView: MediaInputViewProtocol) -> Bool {
         return true
     }
 }

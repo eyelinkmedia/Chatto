@@ -76,7 +76,7 @@ public protocol MediaInputViewDelegate: AnyObject {
                    source: MediaInputViewSource)
     func inputViewDidRequestCameraPermission(_ inputView: MediaInputViewProtocol)
     func inputViewDidRequestPhotoLibraryPermission(_ inputView: MediaInputViewProtocol)
-    func inputViewCanPresentCameraDueToUserInteraction() -> Bool
+    func inputViewCanPresentCameraDueToUserInteraction(_ inputView: MediaInputViewProtocol) -> Bool
 }
 
 public final class MediaInputView: UIView, MediaInputViewProtocol {
@@ -257,7 +257,7 @@ extension MediaInputView: UICollectionViewDataSource {
 extension MediaInputView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == Constants.liveCameraItemIndex {
-            guard self.delegate?.inputViewCanPresentCameraDueToUserInteraction() ?? true else {
+            guard self.delegate?.inputViewCanPresentCameraDueToUserInteraction(self) ?? true else {
                 return
             }
 
