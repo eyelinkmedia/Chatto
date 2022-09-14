@@ -134,6 +134,8 @@ class KeyboardTracker {
         if bottomConstraint == 0 {
             self.keyboardStatus = .hiding
             self.layoutInputAtBottom()
+        } else {
+            self.layoutInputContainer(withBottomConstraint: bottomConstraint)
         }
     }
 
