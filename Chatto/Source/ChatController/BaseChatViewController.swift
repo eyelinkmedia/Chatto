@@ -158,6 +158,15 @@ open class BaseChatViewController: UIViewController,
         self.keyboardTracker?.stopTracking()
     }
 
+    // These are to be called by subclass for page-sheet presentation support
+    open func willPresentModalViewController() {
+        self.keyboardTracker?.stopTracking()
+    }
+
+    open func didDismissModalViewController() {
+        self.keyboardTracker.startTracking()
+    }
+
     private func addCollectionView() {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.createCollectionViewLayout())
         collectionView.contentInset = self.layoutConfiguration.contentInsets
