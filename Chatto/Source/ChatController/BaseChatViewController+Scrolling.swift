@@ -116,7 +116,9 @@ extension BaseChatViewController {
             return
         }
         let diffY = newRefRect.minY - oldRefRect.minY
-        collectionView.contentOffset = CGPoint(x: 0, y: collectionView.contentOffset.y + diffY)
+        let newContentOffsetY = collectionView.contentOffset.y + diffY
+        guard newContentOffsetY > collectionView.contentInset.top else { return }
+        collectionView.contentOffset = CGPoint(x: 0, y: newContentOffsetY)
     }
 
     public func scrollToItem(withId itemId: String,
