@@ -117,7 +117,14 @@ extension BaseChatViewController {
         }
         let diffY = newRefRect.minY - oldRefRect.minY
         let newContentOffsetY = collectionView.contentOffset.y + diffY
-        guard newContentOffsetY > collectionView.contentInset.top else { return }
+        let topContentInset = {
+            if #available(iOS 11.0, *) {
+                return collectionView.adjustedContentInset.top
+            } else {
+                return collectionView.contentInset.top
+            }
+        }()
+        guard newContentOffsetY > -topContentInset else { return }
         collectionView.contentOffset = CGPoint(x: 0, y: newContentOffsetY)
     }
 
