@@ -36,6 +36,7 @@ final class DeviceMediaPicker: NSObject, MediaPicker, UIImagePickerControllerDel
         pickerController.delegate = self
         pickerController.sourceType = .camera
         pickerController.mediaTypes = mediaTypes
+        pickerController.videoQuality = .typeHigh
     }
 
     @objc
