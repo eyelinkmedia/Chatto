@@ -290,16 +290,18 @@ extension BaseChatViewController {
         let newDecoratedItems = self.chatItemsDecorator?.decorateItems(newItems) ?? newItems.map { DecoratedChatItem(chatItem: $0, decorationAttributes: nil) }
         let changes = Chatto.generateChanges(oldCollection: oldItems.map(HashableItem.init),
                                              newCollection: newDecoratedItems.map(HashableItem.init))
-        let itemCompanionCollection = self.createCompanionCollection(fromChatItems: newDecoratedItems, previousCompanionCollection: oldItems)
-        let layoutModel = self.createLayoutModel(itemCompanionCollection, collectionViewWidth: collectionViewWidth)
         let updateModelClosure : () -> Void = { [weak self] in
-            self?.layoutModel = layoutModel
-            self?.chatItemCompanionCollection = itemCompanionCollection
+            guard let self else { return }
+            let itemCompanionCollection = self.createCompanionCollection(fromChatItems: newDecoratedItems, previousCompanionCollection: oldItems)
+            let layoutModel = self.createLayoutModel(itemCompanionCollection, collectionViewWidth: collectionViewWidth)
+            self.layoutModel = layoutModel
+            self.chatItemCompanionCollection = itemCompanionCollection
         }
         return (changes, updateModelClosure)
     }
 
     private func createCompanionCollection(fromChatItems newItems: [DecoratedChatItem], previousCompanionCollection oldItems: ChatItemCompanionCollection) -> ChatItemCompanionCollection {
+        assert(Thread.isMainThread, "Expected main thread")
         return ChatItemCompanionCollection(items: newItems.map { (decoratedChatItem) -> ChatItemCompanion in
 
             /*
