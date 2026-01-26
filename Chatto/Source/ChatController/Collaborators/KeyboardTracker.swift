@@ -113,6 +113,7 @@ class KeyboardTracker {
         guard bottomConstraint > 0 else { return } // Some keyboards may report initial willShow/DidShow notifications with invalid positions
         self.keyboardStatus = .showing
         self.layoutInputContainer(withBottomConstraint: bottomConstraint)
+        self.adjustTrackingViewSizeIfNeeded()
     }
 
     @objc
@@ -124,7 +125,6 @@ class KeyboardTracker {
         guard bottomConstraint > 0 else { return } // Some keyboards may report initial willShow/DidShow notifications with invalid positions
         self.keyboardStatus = .shown
         self.layoutInputContainer(withBottomConstraint: bottomConstraint)
-        self.adjustTrackingViewSizeIfNeeded()
     }
 
     @objc
@@ -186,6 +186,9 @@ class KeyboardTracker {
             self.keyboardTrackerView.window?.layoutIfNeeded()
 
             self.isPerformingForcedLayout = false
+
+            // Notify about final height in case update was missed while isPerformingForcedLayout
+            self.layoutInputAtTrackingViewIfNeeded()
         }
     }
 
