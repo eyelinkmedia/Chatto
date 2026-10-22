@@ -24,7 +24,7 @@
 
 import UIKit
 
-public enum ViewContext {
+@frozen public enum ViewContext {
     case normal
     case sizing // You may skip some cell updates for faster sizing
 }

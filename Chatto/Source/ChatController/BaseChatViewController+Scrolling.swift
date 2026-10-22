@@ -24,7 +24,7 @@
 
 import UIKit
 
-public enum CellVerticalEdge {
+@frozen public enum CellVerticalEdge {
     case top
     case bottom
 }

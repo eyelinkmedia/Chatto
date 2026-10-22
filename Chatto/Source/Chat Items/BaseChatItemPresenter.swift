@@ -24,7 +24,7 @@
 
 import UIKit
 
-public enum ChatItemVisibility {
+@frozen public enum ChatItemVisibility {
     case hidden
     case appearing
     case visible

@@ -23,7 +23,7 @@
 
 import UIKit
 
-public enum CircleIconType {
+@frozen public enum CircleIconType {
     case undefined
     case infinity
     case exclamation

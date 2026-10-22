@@ -24,7 +24,7 @@
 
 import UIKit
 
-public enum ChatInputItemPresentationMode: UInt {
+@frozen public enum ChatInputItemPresentationMode: UInt {
     case keyboard
     case customView
     case none
