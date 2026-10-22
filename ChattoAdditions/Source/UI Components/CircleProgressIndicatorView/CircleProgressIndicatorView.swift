@@ -27,7 +27,7 @@ public final class CircleProgressIndicatorView: UIView {
 
     // MARK: - Declarations
 
-    public enum ProgressType {
+    @frozen public enum ProgressType {
         case undefined
         case icon
         case timer
@@ -35,7 +35,7 @@ public final class CircleProgressIndicatorView: UIView {
         case download
     }
 
-    public enum ProgressStatus {
+    @frozen public enum ProgressStatus {
         case undefined
         case starting
         case inProgress

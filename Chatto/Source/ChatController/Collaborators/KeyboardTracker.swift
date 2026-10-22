@@ -24,7 +24,7 @@
 
 import UIKit
 
-public enum KeyboardStatus {
+@frozen public enum KeyboardStatus {
     case hiding
     case hidden
     case showing

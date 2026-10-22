@@ -24,12 +24,12 @@
 
 import UIKit
 
-public enum TransferDirection {
+@frozen public enum TransferDirection {
     case upload
     case download
 }
 
-public enum TransferStatus {
+@frozen public enum TransferStatus {
     case idle
     case transfering
     case failed

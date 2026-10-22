@@ -24,7 +24,7 @@
 
 import UIKit
 
-public enum MessageViewModelStatus {
+@frozen public enum MessageViewModelStatus {
     case success
     case sending
     case failed

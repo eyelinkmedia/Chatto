@@ -39,12 +39,12 @@ public protocol MediaInputViewProtocol {
     var presentingController: UIViewController? { get }
 }
 
-public enum MediaInputViewSource {
+@frozen public enum MediaInputViewSource {
     case camera
     case gallery
 }
 
-public enum InputMediaType {
+@frozen public enum InputMediaType {
     case image
     case video
 

@@ -25,7 +25,7 @@
 import Foundation
 import Chatto
 
-public enum MessageStatus {
+@frozen public enum MessageStatus {
     case failed
     case sending
     case success
